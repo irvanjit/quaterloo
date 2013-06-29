@@ -1,0 +1,7 @@
+Django==1.4
+distribute==0.6.34
+dj-database-url==0.2.1
+https://github.com/kstateome/django-cas/zipball/master
+djangorestframework==2.3.6
+psycopg2==2.5.1
+wsgiref==0.1.2

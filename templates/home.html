@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block nav_bar_content %} 
+<a class="brand" href="">{{first_name}}</a>
+<ul style="float:right" class="nav">
+    <li><a href="{% url logout %}">Logout</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<div>
+    <ul class="well">
+        <form action="" method="post">{% csrf_token %}
+            <input class="input-block-level" type="text" name="title" placeholder="Title(keep this short...)">
+            <textarea class="input-block-level" rows="3" name="content" placeholder="Description of your problem...."></textarea>
+            <input class="btn btn-inverse" type="submit" style="color:#DCE419;"/>
+        </form>
+    </ul>
+</div>
+<div>
+    <ul class="well">
+        {% for question in questions %}
+            <li class="alert" style="overflow:hidden" onmouseover="this.style.backgroundColor='#cccccc'" onmouseout="this.style.backgroundColor=''">
+                <div style="width:19%; float:left;">
+                    <div style="width:90%; height:50%; float:left;">
+                        <img src="/media/img/thumbs_up.jpg" style="float:left; width:50%; height:80px;" />
+                        <img src="/media/img/thumbs_down.jpg" style="float:left; width:50%; height:80px;"/>
+                    </div>
+                    <div align="center">
+                        <h1><font size="60px" line-height="50px">70</font></h1>
+                    </div>
+                </div>
+                <a href="posts/{{question.id}}" style="color:#000000" onmouseover="this.style.color='#ccff33'" onmouseout="this.style.color='#000000'"><h4 style="width:50%; float:left;">{{question.title}}</h4></a>
+                <div style="width:19%; float:right;">
+                    <img src="/media/img/noob.jpg" class="img-circle"/>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
