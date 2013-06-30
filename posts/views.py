@@ -27,7 +27,7 @@ class HomeView(APIView):
                 question = Question(user=request.user, title=request.POST.get('title', ''), content=request.POST.get('content', ''))
                 question.save()
             questions = sorted(Question.objects.all(), key=attrgetter('id'), reverse=True)
-            views.create(title)
+            # views.create(title)
             context = RequestContext(request, {'first_name': request.user.username, 'questions': questions})
             return render_to_response(self.template, context_instance=context)
 
@@ -43,8 +43,7 @@ class PostView(APIView):
     def get(self, request, *args, **kwargs):
         try:
             question = Question.objects.get(id=int(kwargs['post_id']))
-            chat_room = ChatRoom.objects.get(name=question.title)
-            context = RequestContext(request, {'first_name': request.user.username, 'question': question, 'room': get_object_or_404(ChatRoom, slug=chat_room.slug)})
+            context = RequestContext(request, {'first_name': request.user.username, 'question': question,})
             return render_to_response(self.template, context_instance=context)
         except Question.DoesNotExist as e:
             return Response(400, e.message)
