@@ -78,6 +78,8 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'uuri)mon%2vhx9s9uel2!t+#kd)m5dg3%#^bbc+0k==e@6-&amp;t6'
 
+AUTH_PROFILE_MODULE = 'auth.UserProfile'
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -131,6 +133,7 @@ INSTALLED_APPS = (
     'cas',
     'auth',
     'posts',
+    'stats',
 )
 
 
@@ -138,7 +141,7 @@ INSTALLED_APPS = (
 
 CAS_SERVER_URL = "https://cas.uwaterloo.ca/cas/"
 
-CAS_REDIRECT_URL = '/test'
+CAS_REDIRECT_URL = '/'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

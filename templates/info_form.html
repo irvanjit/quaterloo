@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1>First time here?</h1>
+    <form action="/info" method="post">{% csrf_token %}
+        <div class="row collapse">
+            <div class="large-8 columns">
+                <div class="panel">
+                    <label for="faculty">FACULTY</label>
+                    <select id="faculty">
+                        <option>Engineering</option>
+                        <option>Math</option>
+                        <option>Science</option>
+                        <option>Applied Health Sciences</option>
+                        <option>Environment</option>
+                        <option>Arts</option>
+                    </select><br>
+
+                    <label for="faculty">FACULTY</label>
+                    <select id="faculty">
+                        <option>Engineering</option>
+                        <option>Math</option>
+                        <option>Science</option>
+                        <option>Applied Health Sciences</option>
+                        <option>Environment</option>
+                        <option>Arts</option>
+                    </select><br>
+                    
+                    <label for="faculty">FACULTY</label>
+                    <select id="faculty">
+                        <option>Engineering</option>
+                        <option>Math</option>
+                        <option>Science</option>
+                        <option>Applied Health Sciences</option>
+                        <option>Environment</option>
+                        <option>Arts</option>
+                    </select><br>
+                    <input type="submit">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

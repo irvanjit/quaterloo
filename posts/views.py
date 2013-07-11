@@ -8,6 +8,7 @@ from django.template import RequestContext
 from django.utils import simplejson as json
 from models import Question
 from operator import attrgetter
+from django.contrib.auth.decorators import login_required
 
 
 class HomeView(APIView):

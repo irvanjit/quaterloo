@@ -1,42 +1,10 @@
 {% extends 'base.html' %}
 
-
-{% block nav_bar_content %} 
-<a class="brand" href="{% url home %}">{{first_name}}</a>
-<ul style="float:right" class="nav">
-    <li><a href="{% url logout %}">Logout</a></li>
-</ul>
-
-{% block extra_head %}
-<style type="text/css">  
-
-
-
-</style>
-{% endblock %}
-
-<script type="text/javascript" src="http://cdn.unioncloud.io/OrbiterMicro_latest.js"></script>
-<!--Load the OrbiterMicro JavaScript library (minified version). Use for production.-->
-<!--<script type="text/javascript" src="http://cdn.unioncloud.io/OrbiterMicro_latest_min.js"></script>-->
-
-<!--Load UnionDraw application code-->
-<script src="{{ STATIC_URL }}js/uniondraw.js"></script>
-<script src="{{ STATIC_URL }}js/excanvas.js"></script>
-{% endblock %}
 {% block content %}
-<div class="media input-block-level alert" style="overflow:hidden">
-  <a class="pull-left" href="#">
-    <img class="media-object" style="margin-right:10px" src="/media/img/noob.jpg" width="100px" height="100px">
-  </a>
-  <div class="media-body" style="width:70%; float:left;">
-    <h4 class="media-heading">{{question.title}}</h4>
-    <p class="media-content">{{question.content}}</h4>
-  </div>
-</div>
 
 <div class="media input-block-level alert" style="overflow:hidden">
   <a class="pull-left" href="#">
-    <img class="media-object" style="margin-right:10px" src="/media/img/noob.jpg" width="100px" height="100px">
+    <img class="media-object" style="margin-right:10px" src="{{ STATIC_URL }}img/noob.jpg" width="100px" height="100px">
   </a>
   <div class="media-body" style="width:70%; float:left;">
     <h4 class="media-heading">{{question.title}}</h4>
