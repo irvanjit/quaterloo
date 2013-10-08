@@ -115,7 +115,6 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'gunicorn',
     'cas',
-    'south',
     'auth',
     'core',
 )
