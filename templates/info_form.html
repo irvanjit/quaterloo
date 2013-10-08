@@ -3,12 +3,15 @@
 {% block content %}
 <div>
     <h1>First time here?</h1>
-    <form action="/info" method="post">{% csrf_token %}
+    <p>Welcome! Quaterloo was designed to be a fully anonymous platform to ensure inclusivity for all students using it. Even though you authenticate using your UW credentials, we don't access any of your personal information or require any either. However, if you'd like to provide a few details for your site badge, you can do so below.
+    <form action="/info/" method="post">
+        {% csrf_token %}
         <div class="row collapse">
             <div class="large-8 columns">
                 <div class="panel">
-                    <label for="faculty">FACULTY</label>
-                    <select id="faculty">
+                    <label for="faculty">What's your faculty?</label>
+                    <select id="faculty" name="faculty">
+                        <option DISABLED>I'd rather not say</option>
                         <option>Engineering</option>
                         <option>Math</option>
                         <option>Science</option>
@@ -17,24 +20,15 @@
                         <option>Arts</option>
                     </select><br>
 
-                    <label for="faculty">FACULTY</label>
-                    <select id="faculty">
-                        <option>Engineering</option>
-                        <option>Math</option>
-                        <option>Science</option>
-                        <option>Applied Health Sciences</option>
-                        <option>Environment</option>
-                        <option>Arts</option>
-                    </select><br>
-                    
-                    <label for="faculty">FACULTY</label>
-                    <select id="faculty">
-                        <option>Engineering</option>
-                        <option>Math</option>
-                        <option>Science</option>
-                        <option>Applied Health Sciences</option>
-                        <option>Environment</option>
-                        <option>Arts</option>
+                    <label for="year">What school year are you in?</label>
+                    <select id="year" name ="year">
+                        <option DISABLED>I'd rather not say</option>
+                        <option>Freshman</option>
+                        <option>Sophomore</option>
+                        <option>Junior</option>
+                        <option>Senior</option>
+                        <option>Grad student</option>
+                        <option>Graduated</option>
                     </select><br>
                     <input type="submit">
                 </div>

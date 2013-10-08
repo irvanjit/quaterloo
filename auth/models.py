@@ -8,7 +8,7 @@ class UserProfile(models.Model):
 	school = models.CharField(max_length=200, null=True)
 	faculty = models.CharField(max_length=200, null=True)
 	program = models.CharField(max_length=400, null=True)
-	year = models.IntegerField(null=True)
+	year = models.CharField(max_length=200, null=True)
 
 
 def create_user_profile(sender, instance, created, **kwargs):

@@ -2,13 +2,64 @@
 
 {% block content %}
 
-<div class="media input-block-level alert" style="overflow:hidden">
+{% if new_post %}
+<div>
+    <form action="" method="post">{% csrf_token %}
+        <div class="row collapse">
+            <div class="large-12 columns">
+                <div class="panel">
+                    <input type="text" name="question_title">
+                    <input type="text" name="question_content">
+                    <input type="submit">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endif %}
+
+
+{% if question.title %}
+<div>
+  <div class="row collapse">
+    <div class="large-12 columns">
+      <div class="panel">
+        <h4 class="media-heading">{{question.title}}</h4>
+        <p class="media-content">{{question.content}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+    <form action="" method="post">{% csrf_token %}
+        <div class="row collapse">
+            <div class="large-12 columns">
+                <div class="panel">
+                    <input type="text" name="answer_title">
+                    <input type="text" name="answer_content">
+                    <input type="submit">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endif %}
+</div>
+
+
+
+
+
+
+<!--<div class="media input-block-level alert" style="overflow:hidden">
   <a class="pull-left" href="#">
     <img class="media-object" style="margin-right:10px" src="{{ STATIC_URL }}img/noob.jpg" width="100px" height="100px">
   </a>
   <div class="media-body" style="width:70%; float:left;">
     <h4 class="media-heading">{{question.title}}</h4>
-    <p class="media-content">{{question.content}}</h4>
+    <p class="media-content">{{question.content}}</p>
   </div>
 </div>
 
@@ -20,7 +71,7 @@
         </form>
     </ul>
 </div>
-<div>
+<div>-->
 
 <!-- {# CHAT IFRAME #}
 <div class="well input-block-level" width="400px">

@@ -14,7 +14,9 @@ framework.
 
 """
 import os
+# import django.core.handlers.wsgi
 
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "quaterloo.settings")
 
 # This application object is used by any WSGI server configured to use this
@@ -22,7 +24,14 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "quaterloo.settings")
 # setting points here.
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
+# application = django.core.handlers.wsgi.WSGIHandler()
+
 
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
+import django.core.handlers.wsgi
+import os
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+application = django.core.handlers.wsgi.WSGIHandler()

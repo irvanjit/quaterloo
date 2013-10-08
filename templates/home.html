@@ -1,29 +1,20 @@
 {% extends 'base.html' %}
-
+{% include 'post.html' %}
 {% block content %}
+
 <div>
     <form action="" method="post">{% csrf_token %}
         <div class="row collapse">
             <div class="large-12 columns">
                 <div class="panel">
-                    <input type="text">
-                    <input type="text">
+                    <input type="text" name="question_title">
+                    <input type="text" name="question_content">
                     <input type="submit">
                 </div>
             </div>
         </div>
     </form>
 </div>
-
-<!--    <ul class="well">
-        <form action="" method="post">{% csrf_token %}
-            <input class="input-block-level" type="text" name="title" placeholder="Title(keep this short...)">
-            <textarea class="input-block-level" rows="3" name="content" placeholder="Description of your problem...."></textarea>
-            <input class="btn btn-inverse" type="submit" style="color:#DCE419;"/>
-        </form>
-    </ul>
-</div>
--->
 
 <ul class="small-block-grid-2 large-block-grid-4">
   <li><img src="../img/demos/demo1.png"></li>
@@ -32,25 +23,13 @@
   <li><img src="../img/demos/demo4.png"></li>
 </ul>
 
-<div>
-    <ul class="well">
+<div class="row collapse">
+    <div class="large-12 columns">
         {% for question in questions %}
-            <li class="alert" style="overflow:hidden" onmouseover="this.style.backgroundColor='#cccccc'" onmouseout="this.style.backgroundColor=''">
-                <div style="width:19%; float:left;">
-                    <div style="width:90%; height:50%; float:left;">
-                        <img src="{{ STATIC_URL}}img/thumbs_up.jpg" style="float:left; width:50%; height:80px;" />
-                        <img src="{{ STATIC_URL}}img/thumbs_down.jpg" style="float:left; width:50%; height:80px;"/>
-                    </div>
-                    <div align="center">
-                        <h1><font size="60px" line-height="50px">70</font></h1>
-                    </div>
-                </div>
-                <a href="posts/{{question.id}}" style="color:#000000" onmouseover="this.style.color='#ccff33'" onmouseout="this.style.color='#000000'"><h4 style="width:50%; float:left;">{{question.title}}</h4></a>
-                <div style="width:19%; float:right;">
-                    <img src="/media/img/noob.jpg" class="img-circle"/>
-                </div>
-            </li>
+            <div class="panel">
+                <a href="posts/{{question.id}}"><h4>{{ question.title }}</h4></a>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
 {% endblock %}
