@@ -4353,6 +4353,11 @@ form.custom .custom.disabled {
   padding-bottom: .5em;
   margin-bottom: 0;
 }
+
+.top-bar .bg {
+  color: #FFCC00;
+}
+
 /* line 107, ../../../../.rvm/gems/ruby-2.0.0-p247/gems/zurb-foundation-4.2.3/scss/foundation/components/_top-bar.scss */
 .top-bar .title-area {
   position: relative;

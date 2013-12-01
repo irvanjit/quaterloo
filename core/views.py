@@ -24,15 +24,14 @@ class HomeView(APIView):
 
     def post(self, request, *args, **kwargs):
         form = forms.PostForm(request.POST)
-        pdb.set_trace()
         try:
             if(form.is_valid()):
-                title = request.POST.get('question_title')
-                question = Question(user=request.user, title=request.POST.get('question_title'), content=request.POST.get('question_content'))
+                title = request.POST.get('question_title', '')
+                question = Question(user=request.user, title=request.POST.get('question_title', ''), content=request.POST.get('question_content'))
                 question.save()
             questions = sorted(Question.objects.all(), key=attrgetter('id'), reverse=True)
             # views.create(title)
-            context = RequestContext(request, {'questions': questions})
+            context = RequestContext(request, {'first_name': request.user.username, 'questions': questions})
             return render_to_response(self.template, context_instance=context)
 
         except ValidationError as v:
@@ -47,45 +46,57 @@ class PostView(APIView):
     def get(self, request, *args, **kwargs):
         try:
             question = Question.objects.get(id=int(kwargs['post_id']))
-            context = RequestContext(request, {'question': question})
+            chat_room = ChatRoom.objects.get(name=question.title)
+            context = RequestContext(request, {'first_name': request.user.username, 'question': question, 'room': get_object_or_404(ChatRoom, slug=chat_room.slug)})
             return render_to_response(self.template, context_instance=context)
         except Question.DoesNotExist as e:
             return Response(400, e.message)
-        except KeyError:
-            context = RequestContext(request, {'new_post': 'YES'})
-            return render_to_response(self.template, context_instance=context)
 
-    def post(self, request, *args, **kwargs):
-        # form = forms.PostForm(request.POST)
-        # try:
-        #     if(form.is_valid()):
-        #         question = Question(user=request.user, title=request.POST.get('question_title', ''), content=request.POST.get('content', ''))
-        #         question.save()
-        #     questions = sorted(Question.objects.all(), key=attrgetter('id'), reverse=True)
-        #     # views.create(title)
-        #     context = RequestContext(request, {'questions': questions, 'new_post': 'new'})
-        #     return render_to_response(self.template, context_instance=context)
-        # except ValidationError as v:
-        #     return HttpResponseBadRequest(json.dumps(v.mesage_dict))
-        # except Exception as e:
-        #     return HttpResponseBadRequest(json.dumps({'error': e.message}))
-        pdb.set_trace()
-        form = forms.PostForm(request.POST)
-        pdb.set_trace()
-        try:
-            q = ''
-            if(form.is_valid()):
-                title = request.POST.get('question_title')
-                question = Question(user=request.user, title=request.POST.get('question_title'), content=request.POST.get('question_content'))
-                pdb.set_trace()
-                question.save()
-                q = question
-            # return HttpResponseRedirect(post_id)
-            # views.create(title)
-            context = RequestContext(request, {'question': q})
-            return render_to_response(self.template, context_instance=context)
+    # template = 'post.html'
 
-        except ValidationError as v:
-            return HttpResponseBadRequest(json.dumps(v.mesage_dict))
-        except Exception as e:
-            return HttpResponseBadRequest(json.dumps({'error': e.message}))
+    # def get(self, request, *args, **kwargs):
+    #     try:
+    #         question = Question.objects.get(id=int(kwargs['post_id']))
+    #         context = RequestContext(request, {'question': question})
+    #         return render_to_response(self.template, context_instance=context)
+    #     except Question.DoesNotExist as e:
+    #         return Response(400, e.message)
+    #     except KeyError:
+    #         context = RequestContext(request, {'new_post': 'YES'})
+    #         return render_to_response(self.template, context_instance=context)
+
+    # def post(self, request, *args, **kwargs):
+
+    #     # form = forms.PostForm(request.POST)
+    #     # try:
+    #     #     if(form.is_valid()):
+    #     #         question = Question(user=request.user, title=request.POST.get('question_title', ''), content=request.POST.get('content', ''))
+    #     #         question.save()
+    #     #     questions = sorted(Question.objects.all(), key=attrgetter('id'), reverse=True)
+    #     #     # views.create(title)
+    #     #     context = RequestContext(request, {'questions': questions, 'new_post': 'new'})
+    #     #     return render_to_response(self.template, context_instance=context)
+    #     # except ValidationError as v:
+    #     #     return HttpResponseBadRequest(json.dumps(v.mesage_dict))
+    #     # except Exception as e:
+    #     #     return HttpResponseBadRequest(json.dumps({'error': e.message}))
+    #     pdb.set_trace()
+    #     form = forms.PostForm(request.POST)
+    #     pdb.set_trace()
+    #     try:
+    #         q = ''
+    #         if(form.is_valid()):
+    #             title = request.POST.get('question_title')
+    #             question = Question(user=request.user, title=request.POST.get('question_title'), content=request.POST.get('question_content'))
+    #             pdb.set_trace()
+    #             question.save()
+    #             q = question
+    #         # return HttpResponseRedirect(post_id)
+    #         # views.create(title)
+    #         context = RequestContext(request, {'question': q})
+    #         return render_to_response(self.template, context_instance=context)
+
+    #     except ValidationError as v:
+    #         return HttpResponseBadRequest(json.dumps(v.mesage_dict))
+    #     except Exception as e:
+    #         return HttpResponseBadRequest(json.dumps({'error': e.message}))
