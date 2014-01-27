@@ -9,7 +9,7 @@ from django.template import RequestContext
 from django.utils import simplejson as json
 from django.db.transaction import commit_on_success
 from django.views.generic.edit import FormView
-from auth.models import UserProfile
+# from auth.models import UserProfile
 
 import pdb
 
@@ -19,21 +19,21 @@ def hello(request):
 
 @login_required
 def info(request):
-    if request.method == 'POST':
-        info = request.POST
-        profile = request.user.get_profile()
-        pdb.set_trace()
-        if info.get('faculty') is not None:
-            profile.faculty = info.get('faculty')
-        if info.get('year') is not None:
-            profile.year = info.get('year')
-        school = 'University of Waterloo'
-        profile.school = school
-        profile.save()
-        return HttpResponseRedirect(reverse('home'))
-    else:
-        context = RequestContext(request)
-        return render_to_response('info_form.html', context_instance=context)
+    # if request.method == 'POST':
+    #     info = request.POST
+    #     profile = request.user.get_profile()
+    #     pdb.set_trace()
+    #     if info.get('faculty') is not None:
+    #         profile.faculty = info.get('faculty')
+    #     if info.get('year') is not None:
+    #         profile.year = info.get('year')
+    #     school = 'University of Waterloo'
+    #     profile.school = school
+    #     profile.save()
+    return HttpResponseRedirect(reverse('home'))
+    # else:
+    #     context = RequestContext(request)
+    #     return render_to_response('info_form.html', context_instance=context)
 
 
 def alt_login(request, *args, **kwargs):
