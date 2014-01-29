@@ -62,7 +62,7 @@ STATICFILES_FINDERS = (
 
 SECRET_KEY = 'uuri)mon%2vhx9s9uel2!t+#kd)m5dg3%#^bbc+0k==e@6-&amp;t6'
 
-AUTH_PROFILE_MODULE = 'auth.UserProfile'
+# AUTH_PROFILE_MODULE = 'auth.UserProfile'
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',

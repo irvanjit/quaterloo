@@ -1,32 +1,41 @@
 {% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Quaterloo{% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span8">
-      <!--Body content-->
-      <div class="hero-unit well alert">
-        <h1 style="margin-bottom:15px;">Quaterloo!</h1>
-        <p style="color:#000000;">A great solution to all of the collaboration problems in universities.</p>
+
+<ul class="large-block-grid-1">
+  <li>
+    <div class ="panel">
+      <div class="promo">
+      <center><h1>QUATERLOO</h1>
+        <br>
+        <h2>Stack Exchange for UW students</h2></center>
       </div>
-      <div class="row well alert=success">
-        <div class="span4 alert">
-          <h2 style="color:#000000;">Post your problems.</h2>
-           <p style="color:#000000;">Post your assignment/project questions you want to discuss.</p>
-        </div>
-        <div class="span4 alert">
-          <h2 style="color:#000000;">Chat with classmates</h2>
-           <p style="color:#000000;">Participate in giving back by chatting constructively with classmates to provide solutions.</p>
-       </div>
-        <div class="span4 alert">
-          <h2 style="color:#000000;">WIN!.</h2>
-          <p style="color:#000000;">Everybody wins!!</p>
-        </div>
-      </div>
-      <!--End body-->
     </div>
-  </div>
-</div>
+  </li>
+</ul>
+
+<ul class="large-block-grid-3">
+  <h3>The perks</h3>
+  <li>
+    <div class ="panel">
+      <h3>Exclusive</h3>
+      <p>Quaterloo is a network exclusive to uWaterloo students - you need an official UW id, which gets authenticated against CAS, to get in. While most other Q&amp;A platforms are open to the public, we've decided to keep this one internal to the UW community.</p>
+    </div>
+  </li>
+  <li>
+    <div class ="panel">
+      <h3>Anonymous</h3>
+      <p>Quaterloo is built to be fully anonymous. While you are required to authenticate with your UW credentials, we don't actually store any of your info apart from your user id, and absolutely no user information is used anywhere on the site. Unlike other networks that stress identity, you can ask and answer questions anonymously in the UW community.</p>
+    </div>
+  </li>
+  <li>
+    <div class ="panel">
+      <h3>Freedom</h3>
+      <p>Ask whatever you want, and rest assured knowing that your questions will be both anonymous and visible only to other UW students.</p>
+    </div>
+  </li>
+</ul>
+
 {% endblock %}

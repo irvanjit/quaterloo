@@ -7,23 +7,27 @@
         <div class="row collapse">
             <div class="large-12 columns">
                 <div class="panel">
+                    <h3>Ask anything</h3>
                     <input type="text" name="question_title">
-                    <input type="text" name="question_content">
-                    <input type="submit">
+                    <textarea name="question_content"></textarea>
+                    <input class="button" type="submit">
                 </div>
             </div>
         </div>
     </form>
 </div>
 
-<ul class="small-block-grid-2 large-block-grid-4">
-  <li><img src="../img/demos/demo1.png"></li>
-  <li><img src="../img/demos/demo2.png"></li>
-  <li><img src="../img/demos/demo3.png"></li>
-  <li><img src="../img/demos/demo4.png"></li>
+<ul class="small-block-grid-3">
+    {% for question in questions %}
+    <li>
+        <div class="panel">
+            <a href="posts/{{question.id}}"><h4>{{ question.title }}</h4></a>
+        </div>
+    </li>
+    {% endfor %}
 </ul>
 
-<div class="row collapse">
+<!--<div class="row collapse">
     <div class="large-12 columns">
         {% for question in questions %}
             <div class="panel">
@@ -31,5 +35,6 @@
             </div>
         {% endfor %}
     </div>
-</div>
+</div>-->
+
 {% endblock %}

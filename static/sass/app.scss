@@ -1,29 +1,98 @@
+/* Background color for the top bar */
+$topbar-bg: #000000;
+
+/* Height and margin */
+$topbar-height: 45px;
+
+/* Set the link colors and styles for top-level nav */
+$topbar-link-color: #FFFFFF;
+$topbar-link-color-hover: #FFFFFF;
+$topbar-link-color-active: #FFFFFF;
+$topbar-link-weight: bold;
+$topbar-link-hover-lightness: -30%; /* Darken by 30% */
+$topbar-link-bg-hover: darken($topbar-bg, 3%);
+$topbar-link-bg-active: darken($topbar-bg, 3%);
+
+/* Top menu icon styles */
+$topbar-menu-link-transform: uppercase;
+$topbar-menu-link-font-size: em-calc(13);
+$topbar-menu-link-weight: bold;
+$topbar-menu-link-color: #fff;
+$topbar-menu-icon-color: #fff;
+$topbar-menu-link-color-toggled: #888;
+$topbar-menu-icon-color-toggled: #888;
+
+
+$topbar-dropdown-label-color: #555;
+$topbar-dropdown-label-bg: lighten($topbar-bg, 5%);
+$topbar-dropdown-label-text-transform: uppercase;
+$topbar-dropdown-label-font-weight: bold;
+$topbar-dropdown-label-font-size: em-calc(10);
+
+
+/* Divider Styles */
+$topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%);
+$topbar-divider-border-top: solid 1px darken($topbar-bg, 10%);
+
+$primary-color:#D1AC19;
+$button-font-color: #000000;
+
+
 // Global Foundation Settings
 @import "settings";
+
 
 // Comment out this import if you don't want to use normalize
 @import "normalize";
 
 // Comment out this import if you are customizing you imports below
 @import "foundation";
+$include-html-top-bar-classes: $include-html-classes;
+$include-html-button-classes: $include-html-classes;
+body {background-color:#336699;}
+
+
+/** Removes black background on menu bar **/
+.top-bar-section ul {
+    background: none;
+}
+/** Removes black background on menu item **/
+.top-bar-section li a:not(.button) {
+    // background: none;
+}
+
+@mixin button($padding:$button-med, $bg:$primary-color) {
+  @include button-style($bg, $radius, $disabled);
+}
+
+
+/* Background color for the top bar */
 
 // Import specific parts of Foundation by commenting the import "foundation"
 // and uncommenting what you want below. You must uncomment the following if customizing
 
-// @import "foundation/components/global"; // *always required
+@import "foundation/components/global"; // *always required
 // @import "foundation/components/grid";
+
+//
+// Use this grid if you want to start using the new Foundation 5 grid early.
+// It will change breakpoints to min-width: 640px and 1024px.
+//
+@import "foundation/components/grid-5";
+//
+
 // @import "foundation/components/visibility";
 // @import "foundation/components/block-grid";
 // @import "foundation/components/type";
 // @import "foundation/components/buttons";
-// @import "foundation/components/forms"; // *requires components/buttons
-// @import "foundation/components/custom-forms"; // *requires components/buttons, components/forms
-// @import "foundation/components/button-groups"; // *requires components/buttons
-// @import "foundation/components/dropdown-buttons"; // *requires components/buttons
-// @import "foundation/components/split-buttons"; // *requires components/buttons
+@import "foundation/components/forms"; // *requires components/buttons
+@import "foundation/components/custom-forms"; // *requires components/buttons, components/forms
+@import "foundation/components/button-groups"; // *requires components/buttons
+@import "foundation/components/dropdown-buttons"; // *requires components/buttons
+@import "foundation/components/split-buttons"; // *requires components/buttons
 // @import "foundation/components/flex-video";
 // @import "foundation/components/section";
-// @import "foundation/components/top-bar";  // *requires components/grid
+@import "foundation/components/top-bar";  // *requires components/grid
 // @import "foundation/components/orbit";
 // @import "foundation/components/reveal";
 // @import "foundation/components/joyride";
@@ -45,6 +114,3 @@
 // @import "foundation/components/thumbs";
 // @import "foundation/components/tooltips";
 // @import "foundation/components/dropdown";
-
-$include-html-top-bar-classes: $include-html-classes;
-

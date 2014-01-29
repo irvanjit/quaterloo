@@ -8,13 +8,9 @@ class Question(models.Model):
 
 class Answer(models.Model):
 	user = models.ForeignKey(User)
+	question = models.ForeignKey(Question)
 	content = models.CharField(max_length=300)
 
 class Comment(models.Model):
 	user = models.ForeignKey(User)
 	content = models.CharField(max_length=300)
-
-class Group(models.Model):
-	name = models.CharField(max_length=30)
-	course = models.CharField(max_length=7)
-	section = models.IntegerField()
