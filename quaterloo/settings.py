@@ -1,7 +1,7 @@
 from os import environ, path
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+DEBUG = False
+# TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Irvanjit Gill', 'irvan.gill@gmail.com'),
