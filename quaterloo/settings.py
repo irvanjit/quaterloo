@@ -1,6 +1,6 @@
 from os import environ, path
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
